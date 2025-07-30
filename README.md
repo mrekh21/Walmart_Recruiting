@@ -1,16 +1,15 @@
-# Kaggle Competition
-https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/overview 
-
-# Mlflow Link
-https://dagshub.com/mrekh21/Walmart_Recruiting.mlflow/#/experiments/0
-
-# Dagshub Link
-https://dagshub.com/mrekh21/Walmart_Recruiting
-
-
 # Walmart-ის გაყიდვების პროგნოზირება
 
 ეს პროექტი მიზნად ისახავს Walmart-ის მაღაზიების **ყოველკვირეული გაყიდვების პროგნოზირებას**. გამოყენებულია **Tree-Based Models** (LightGBM, XGBoost), **Classical Statistical Time-Series Models** (ARIMA, SARIMA, SARIMAX), **Deep Learning**-ის მოდელები, მონაცემთა ანალიზი (EDA) და სხვადასხვა time-series/seasonal plot-ები. ექსპერიმენტები დალოგილია **MLflow**-ით და **DagsHub**-ით.
+
+### Kaggle Competition:
+https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/overview 
+
+### Mlflow Link:
+https://dagshub.com/mrekh21/Walmart_Recruiting.mlflow/#/experiments/0
+
+### Dagshub Link:
+https://dagshub.com/mrekh21/Walmart_Recruiting
 
 
 # მონაცემები
@@ -25,11 +24,13 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 
 
 # დირექტორიის სტრუქტურა
+```
 ├── Walmart_Recruiting_Data_Exploration.ipynb
 ├── model_experiment_XGBoost.ipynb
 ├── model_experiment_LightGBM.ipynb
 ├── model_experiment_ARIMA_SARIMA_SARIMAX.ipynb
 ├── README.md
+```
 
 
 
@@ -91,7 +92,6 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 - Week VS Sales
 
 
-
 ## 3. Feature_Selection 
 
 - target-თან სუსტად კორელირებული ცვლადების ამოღება
@@ -99,7 +99,8 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 - მულტიკოლინარობის თავიდან აცილება (მაგ., `Month` და `Day` არ გამოიყენება, დატოვებულია `WeekOfYear` მათ ნაცვლად)
 
 
-##  4. Preprocessing Pipeline-ში გაერთიანებულია Feature Selection და Feature Engineering (fit, transform ფუნქციები)
+##  4. Preprocessing Pipeline
+- გაერთიანებულია Feature Selection და Feature Engineering (fit, transform ფუნქციები) მიდგომები და შეფუთულია კლასად
 
 
 ## 5. მონაცემების გაყოფა
@@ -109,7 +110,7 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 
 ## 6. ქროს ვალიდაცია (RandomSearchCV)
 
-- გამოყენებულია `PredefinedSplit` და custom WMAE scorer-ი 
+- გამოყენებულია `PredefinedSplit` სატრენინგო მონაცემებზე და custom WMAE scorer-ი შეფასებისთვის
 - გამოყენებულია ჰიპერპარამეტრების ტუნინგი და ამორჩეულია 50 კომბინაცია დიდი ჰიპერპარამეტრების სივრციდან (საუკეთესო შედეგის მქონე მოდელის პარამეტრები და სქორი დალოგილია შესაბამის run-ში)
 
 
