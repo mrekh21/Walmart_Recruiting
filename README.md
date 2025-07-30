@@ -29,6 +29,7 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 ├── model_experiment_XGBoost.ipynb
 ├── model_experiment_LightGBM.ipynb
 ├── model_experiment_ARIMA_SARIMA_SARIMAX.ipynb
+├── model_inference.ipynb
 ├── README.md
 ```
 
