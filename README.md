@@ -23,7 +23,7 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 
 
 
-# დირექტორიის სტრუქტურა
+# რეპოზიტორიის სტრუქტურა
 ```
 ├── Walmart_Recruiting_Data_Exploration.ipynb
 ├── model_experiment_XGBoost.ipynb
