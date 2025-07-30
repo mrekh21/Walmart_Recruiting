@@ -12,7 +12,6 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 
 ეს პროექტი მიზნად ისახავს Walmart-ის მაღაზიების **ყოველკვირეული გაყიდვების პროგნოზირებას**. გამოყენებულია **Tree-Based Models** (LightGBM, XGBoost), **Classical Statistical Time-Series Models** (ARIMA, SARIMA, SARIMAX), **Deep Learning**-ის მოდელები, მონაცემთა ანალიზი (EDA) და სხვადასხვა time-series/seasonal plot-ები. ექსპერიმენტები დალოგილია **MLflow**-ით და **DagsHub**-ით.
 
----
 
 # მონაცემები
 
@@ -23,7 +22,6 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 - `features.csv.zip` – ეკონომიკური და მარკეტინგული მახასიათებლები
 - `stores.csv` – მაღაზიების ტიპისა და ზომის მონაცემები
 
----
 
 
 # დირექტორიის სტრუქტურა
@@ -33,7 +31,7 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 ├── model_experiment_ARIMA_SARIMA_SARIMAX.ipynb
 ├── README.md
 
----
+
 
 # Walmart_Recruiting_Data_Exploration.ipynb ნოუთბუქის აღწერა:
 - თითოეული csv ფაილის feature-ების ტიპები, გამოტოვებული მონაცემების რაოდენობა და ა.შ არის შესწავლილი
@@ -44,7 +42,7 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 - მოძრავი საშუალო და სტანდარტული გადახრა
 - სხვაობის სერიები (Differencing)
 
----
+
 # model_experiment_XGBoost.ipynb/model_experiment_LightGBM.ipynb ნოუთბუქების აღწერა:
 
 ## ლოგირება:
@@ -55,7 +53,7 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 - RandomSearchCV_XGBoost / RandomSearchCV_LightGBM
 - Final_Pipeline_XGBRegressor / Final_Pipeline_LGBMRegressor
 
----
+
 ##  1. Feature_Engineering 
 
 ### გამოყოფილია თარიღის ახალი სვეტები:
@@ -68,7 +66,6 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 ### მაღაზიის ტიპის კოდირება:
 - `StoreType` encoding: {A': 3, 'B': 2, 'C': 1}
 
----
 ## 2. EDA
 
 მონაცემთა შესწავლა გამოიყენება ტენდენციების, სეზონურობისა და სხვა დაკვირვებების გამოსავლენად.
@@ -94,8 +91,6 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 - Week VS Sales
 
 
----
-
 
 ## 3. Feature_Selection 
 
@@ -103,24 +98,20 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 - Markdown სვეტების ამოღება ბევრი გამოტოვებული მნიშვნელობის გამო
 - მულტიკოლინარობის თავიდან აცილება (მაგ., `Month` და `Day` არ გამოიყენება, დატოვებულია `WeekOfYear` მათ ნაცვლად)
 
----
 
 ##  4. Preprocessing Pipeline-ში გაერთიანებულია Feature Selection და Feature Engineering (fit, transform ფუნქციები)
 
----
 
 ## 5. მონაცემების გაყოფა
 
 - **დროის მიხედვით გაყოფა** სასწავლო და ვალიდაციის მონაცემებად (cutoff თარიღის მიხედვით, დაახლ. ბოლო 20% არის აღებული ვალიდაციისთვის)
 
----
 
 ## 6. ქროს ვალიდაცია (RandomSearchCV)
 
 - გამოყენებულია `PredefinedSplit` და custom WMAE scorer-ი 
 - გამოყენებულია ჰიპერპარამეტრების ტუნინგი და ამორჩეულია 50 კომბინაცია დიდი ჰიპერპარამეტრების სივრციდან (საუკეთესო შედეგის მქონე მოდელის პარამეტრები და სქორი დალოგილია შესაბამის run-ში)
 
----
 
 ## 7. საუკეთესო მოდელის ტრენინგი (Final_Pipeline)
 
