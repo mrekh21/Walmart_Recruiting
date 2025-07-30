@@ -121,6 +121,11 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 - საუკეთესო მოდელის ჰიპერპარამეტრები, სხვადასხვა მეტრიკები (wmae, mae, rmse, r2) როგორც სატრენინგო, ასევე სავალიდაციო მონაცემებზე დალოგილია შესაბამის run-ში
 - მოდელი დალოგილია და შენახულია model registry-ში, საიდანაც დალოუდდება და ხდება სატესტო მონაცემებზე პროგნოზი
 
+## შედეგები
+
+- Final XGBoost Model: WMAE_val = ~1551, Kaggle Private Score = ~3141, Kaggle Public Score = ~3055
+- Final LightGBM Model: WMAE_val = ~2044, Kaggle Private Score = ~3778, Kaggle Public Score = ~3738 
+
 ---
 
 
