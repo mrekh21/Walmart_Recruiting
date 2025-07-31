@@ -47,7 +47,7 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 - მოძრავი საშუალო და სტანდარტული გადახრა
 - სხვაობის სერიები (Differencing)
 
-
+---
 # model_experiment_XGBoost.ipynb/model_experiment_LightGBM.ipynb ნოუთბუქების აღწერა:
 
 ## ლოგირება:
