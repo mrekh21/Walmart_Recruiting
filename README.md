@@ -16,11 +16,17 @@ https://dagshub.com/mrekh21/Walmart_Recruiting
 
 პროექტში გამოყენებული მონაცემები შედგება შემდეგი ფაილებისგან:
 
-- `train.csv.zip` – ისტორიული გაყიდვების მონაცემები
+- `train.csv.zip` – ძველი წლების/თვეების/კვირების გაყიდვების მონაცემები
 - `test.csv.zip` – სატესტო მონაცემები პროგნოზისთვის
 - `features.csv.zip` – ეკონომიკური და მარკეტინგული მახასიათებლები
-- `stores.csv` – მაღაზიების ტიპისა და ზომის მონაცემები
+- `stores.csv` – მაღაზიების ტიპისა და ზომის შესახებ მონაცემები
 
+# შეფასების მეტრიკა:
+```
+def wmae(y_true, y_pred, is_holiday):
+    weights = np.where(is_holiday == 1, 5, 1)
+    return np.sum(weights * np.abs(y_true - y_pred)) / np.sum(weights)
+```
 
 
 # რეპოზიტორიის სტრუქტურა
