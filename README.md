@@ -1,6 +1,6 @@
 # Walmart-ის გაყიდვების პროგნოზირება
 
-ეს პროექტი მიზნად ისახავს Walmart-ის მაღაზიების **ყოველკვირეული გაყიდვების პროგნოზირებას**. გამოყენებულია **Tree-Based Models** (LightGBM, XGBoost), **Classical Statistical Time-Series Models** (ARIMA, SARIMA, SARIMAX), **Deep Learning**-ის მოდელები, მონაცემთა ანალიზი (EDA) და სხვადასხვა time-series/seasonal plot-ები. ექსპერიმენტები დალოგილია **MLflow**-ით და **DagsHub**-ით.
+ეს პროექტი მიზნად ისახავს Walmart-ის მაღაზიების **ყოველკვირეული გაყიდვების პროგნოზირებას**. გამოყენებულია **Tree-Based Models** (LightGBM, XGBoost), **Classical Statistical Time-Series Models** (ARIMA, SARIMA, SARIMAX), **Deep Learning Models** (TFT, PatchTST, DLinear), მონაცემთა ანალიზი (EDA) და სხვადასხვა time-series/seasonal plot-ები. ექსპერიმენტები დალოგილია **MLflow**-ით და **DagsHub**-ით.
 
 ### Kaggle Competition:
 https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/overview 
@@ -131,6 +131,34 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 
 ---
 
+# model_experiment_ARIMA_SARIMA_SARIMAX.ipynb ნოუთბუქის აღწერა:
+
+## გამოყენებულია სამი მოდელი: 
+- ARIMA (Autoregressive Integrated Moving Average): ძირითადი დროის სერიების მოდელი, რომელიც არ ითვალისწინებს სეზონურობას.
+- SARIMA (Seasonal Autoregressive Integrated Moving Average): ARIMA-ს გაფართოება, რომელიც მოიცავს სეზონურ კომპონენტებს.
+- SARIMAX (Seasonal Autoregressive Integrated Moving Average with Exogenous Regressors): SARIMA-ს შემდგომი გაფართოება, რომელიც აერთიანებს დამატებით გარე (ეგზოგენურ) ცვლადებს პროგნოზირების გასაუმჯობესებლად.
+
+## WalmartSalesPreprocessingPipeline კლასი:
+- აერთიანებს ფაილებს
+- ავსებს გამოტოვებულ მნიშვნელობებს
+- ქმნის დროზე დაფუძნებულ და ციკლურ მახასიათებლებს (Year, Month, WeekOfYear, DayOfWeek, sin_week, cos_week, sin_month, cos_month, sin_dayofweek, cos_dayofweek)
+- ახდენს მაღაზიის ტიპის კოდირებას (one-hot encoding)
+- ქმნის ახალ Holiday ცვლადებს (SuperBowl, LaborDay, Thanksgiving, Christmas)
+
+## analyze_stationarity ფუნქცია: 
+- დროის სერიების სტაციონარობის ანალიზი ADF და KPSS ტესტების გამოყენებით, ACF/PACF პლოტებთან ერთად
+
+## StoreDeptForecaster კლასი:
+- იყენებს pmdarima.auto_arima-ს ფუნქციას, რათა ავტომატურად მოძებნოს ოპტიმალური ARIMA/SARIMA/SARIMAX პარამეტრები (p, d, q და სეზონური P, D, Q, s) კონკრეტული მაღაზია-დეპარტამენტის დროის სერიისთვის
+- ხდება მოდელის მორგება სასწავლო მონაცემებზე და გაყიდვების პროგნოზირებას ვალიდაციის ან სატესტო პერიოდისთვის, ეგზოგენური ცვლადების გათვალისწინებით SARIMAX მოდელების შემთხვევაში
+
+## ტრენინგი და მოდელის შერჩევა:
+- გამოიყენება joblib.Parallel მრავალი მაღაზია-დეპარტამენტის კომბინაციის პროგნოზირების პროცესის დასაჩქარებლად
+- ვალიდაციის მონაცემებზე მიღებული WMAE-ის საფუძველზე ხდება საუკეთესო მოდელის იდენტიფიცირება
+- საუკეთესო მოდელები რეგისტრირდება MLflow-ში
+- თითოეული მოდელის შესაბამის ექსპერიმენტში დალოგილია შესაბამისი run-ები, პარამეტრები და მეტრიკები
+
+---
 
 
 
