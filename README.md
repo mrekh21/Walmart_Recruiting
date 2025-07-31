@@ -166,9 +166,9 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 
 ## ლოგირება:
 Mlflow-ზე არის ცალ-ცალკე ექპერიმენტებად (ARIMA_Training, SARIMA_Training, SARIMAX_Training), ხოლო თითოეულში არის შესაბამისი run-ები:
-- Preprocessing
-- CV
-- Best_Model
+- Preprocessing_ARIMA / Preprocessing_SARIMA / Preprocessing_SARIMAX
+- CV_ARIMA / CV_SARIMA / CV_SARIMAX
+- Best_Model_ARIMA / Best_Model_SARIMA / Best_Model_SARIMAX
 ---
 
 
