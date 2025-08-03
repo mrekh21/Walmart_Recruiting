@@ -169,6 +169,10 @@ Mlflow-ზე არის ცალ-ცალკე ექპერიმენ
 - Preprocessing_ARIMA / Preprocessing_SARIMA / Preprocessing_SARIMAX
 - CV_ARIMA / CV_SARIMA / CV_SARIMAX
 - Best_Model_ARIMA / Best_Model_SARIMA / Best_Model_SARIMAX
+
+## შედეგები:
+- val_WMAE ~ 2165 (ARIMA), ~ 1811 (SARIMA/SARIMAX)
+- მხოლოდ 20 store-dept წყვილია აღებული (დიდი დრო მიჰქონდა ტრენინგს): unique_series_ids_for_cv = unique_series_ids_for_cv[:20], ამიტომ submission-ზე ისედაც ცუდი შედეგი ექნება
 ---
 
 ---
